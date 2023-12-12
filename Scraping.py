@@ -48,4 +48,5 @@ def scrape(url):
 if __name__ == "__main__":
     # This code will only be executed
     # if the script is run as the main program
+
     df = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')

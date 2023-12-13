@@ -76,3 +76,12 @@ plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.show()
 ##################################################
+
+##### Diagrama su filmu reitingais ######
+plt.figure(figsize=(10,6))
+sns.scatterplot(data=df,x='Year', y='Rating', hue='Rating', palette='viridis', size='Rating', sizes=(20,200))
+plt.title('Diagrama su filmu reitingais')
+plt.xlabel('Metai')
+plt.ylabel('Reitingas')
+plt.show()
+##########################################

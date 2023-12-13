@@ -6,3 +6,7 @@ from scraping import scrape
 # result = pd.concat([df1, df2])
 # result.to_csv("result.csv", index = False)
 df = pd.read_csv('result.csv')
+
+
+avg_rating = df['Rating'].mean()                                # - reitingu vidurkis
+# print(f'Vidutinis filmu reitingas yra: {avg_rating:.2f}')

@@ -27,3 +27,17 @@ min_length = df['Length'].min()   # - randam minimalia ir maximalia reiksme
 print(f'Minimalus filmo laikas: {min_length} min')
 max_length = df['Length'].max()
 print(f'Maksimalus filmo laikas: {max_length} min')
+
+
+##### Grafikas Reitingo vidurkis pagal sertifikatą #####
+popular_cert = df.groupby('Certificate')['Rating'].mean().sort_values(ascending=True)
+print(popular_cert)
+
+plt.figure(figsize=(10,9))
+popular_cert.plot(kind='bar')
+plt.title('Filmo reitingas pagal sertifikata')
+plt.xlabel('Sertifikatas')
+plt.ylabel('Filmo reitingas')
+plt.xticks(rotation=45)
+plt.show()
+########################################################

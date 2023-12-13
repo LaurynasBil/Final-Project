@@ -1,12 +1,16 @@
 import pandas as pd
 from scraping import scrape
+from writesql import duomenu_irasymas_sql
 
 # df1 = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')
 # df2 = scrape('https://www.imdb.com/list/ls063676660/?st_dt=&mode=detail&page=')
 # result = pd.concat([df1, df2])
+# Duomenis įrašome i csv failą kad butu galima lengviau su jais dirbti
+# ir nereikėtu scrapinti kiekviena karta kazka pakeitus
 # result.to_csv("result.csv", index = False)
 df = pd.read_csv('result.csv')
-
+# Savo duomenis irasome i SQl lentele naudodami sukurta funkcija kitame faile
+duomenu_irasymas_sql(df)
 
 avg_rating = df['Rating'].mean()      # - reitingu vidurkis
 print(f'Vidutinis filmu reitingas yra: {avg_rating:.2f}')

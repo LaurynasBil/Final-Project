@@ -1,11 +1,10 @@
 import psycopg2
-from sqlalchemy import create_engine
 
 def duomenu_irasymas_sql(df):
     db_host = 'localhost'
     db_name = 'filmai'
     db_user = 'postgres'
-    db_password = 'laurynasb1'
+    db_password = 'psw'
     connection = psycopg2.connect(host=db_host, database=db_name, user=db_user, password=db_password)
     cursor = connection.cursor()
     create_table_query = '''
@@ -28,7 +27,7 @@ def duomenu_irasymas_sql(df):
             '''
         cursor.execute(insert_query, (row['Title'], row['Year'], row['Certificate'], row['Length'], row['Genre'], row['Rating']))
         connection.commit()
-    print('Duomenys irasyti')
+    print('Duomenys įrašyti')
 
 if __name__ == "__main__":
     print('This is the main program!')

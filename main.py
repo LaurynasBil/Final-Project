@@ -29,6 +29,8 @@ print(f'Minimalus filmo laikas: {min_length} min')
 max_length = df['Length'].max()
 print(f'Maksimalus filmo laikas: {max_length} min')
 
+year_groups = df.groupby('Year').size()    # - filmu pasiskirstymas pagal metus
+# print(year_groups)
 
 ##### Grafikas Reitingo vidurkis pagal sertifikatą #####
 popular_cert = df.groupby('Certificate')['Rating'].mean().sort_values(ascending=True)

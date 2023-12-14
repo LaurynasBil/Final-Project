@@ -38,16 +38,26 @@ result = pd.concat([df1, df2])'.
 - print(f'Minimalus filmu reitingas: {min_rating}')
 - max_rating = df['Rating'].max()
 - print(f'Maksimalus filmu reitingas: {max_rating}')'.
-- Taip pat randam filmu laiko vidurkį, minimalią ir maximalią filmų laiko reikšmes:
+- Taip pat randam filmų laiko vidurkį, minimalią ir maximalią filmų laiko reikšmes:
 - 'avg_length = df['Length'].mean()
 - print(f'Vidutinis filmu laikas yra: {avg_length:.2f} min')
 - min_length = df['Length'].min()
 - print(f'Minimalus filmo laikas: {min_length} min')
 - max_length = df['Length'].max()
 - print(f'Maksimalus filmo laikas: {max_length} min')'.
-- Apskaičiuojame filmų pasiskirstymą pagal metus:
+- Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus:
 - 'year_groups = df.groupby('Year').size()
 -  print(year_groups)'.
+- Atliekame duomenų vizualizaciją Matplotlib ir Seaborn bibliotekų pagalba. Sukuriame grafiką 'Įvertinimų vidurkis pagal sertifikatą'.
+- Parašome naują sutrumpintą pavadinimą 'popular_cert', kurį naudosime šiame kode, ir nurodome jam komandas:
+- 'popular_cert = df.groupby('Certificate')['Rating'].mean().sort_values(ascending=True)
+- print(popular_cert)'.
+- 'df' - tai DataFrame veiksmas, 'groupby' - grupuojame nurodytus duomenis, 'mean()' - randame vidurkį, 'sort_values' - rušiuojame reikšmes, 'ascending=True' - duomenys bus rodomi didėjimo tvarka.
+- Nurodome grafiko dydį: 'plt.figure(figsize=(10,9))'.
+- Nurodome grafiko pavadinimą: 'plt.title('Filmo reitingas pagal sertifikata')'.
+- Nurodome grafiko x ir y ašių pavadinimus:
+- 'plt.xlabel('Sertifikatas')
+-  plt.ylabel('Filmo reitingas')'.
 
 
 

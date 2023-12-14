@@ -1,6 +1,6 @@
 Projekto Pavadinimas: Kino Filmų Reitingų Analizė
 
-Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisvai prieinama ir kuriais gali naudotis vartotojai. Pasirinkome pavadinimus, metus, serifikatus, filmo 
+Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisvai prieinama ir kuria gali naudotis vartotojai. Pasirinkome pavadinimus, metus, serifikatus, filmo 
 laiką, žanrus ir įvertinimus, išrinkome jų klases ir BeautifulSoup 4 (bs4) bibliotekos pagalba nuskaitėme duomenis iš svetainės. 
 - Projekto pradžioje nurodėme funkciją: def scrape(url): , kuri apima visus duomenis iki funkcijos pabaigos:
 - df = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=').

@@ -64,6 +64,15 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Susikuriame naują sąraša kuriame rinksime informacija apie kiekvieno unikalaus žanro filmų trukmės vidurkį.
 - Pasileidžiame 'for' ciklą kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame kurie filmai turi nurodyta žanrą, atliekame vidutinės trukmės skaičiavima su 'mean()' funkcija, žanro pavadinimą bei filmų trukmės vidurkį įsirašome į sąrašą. Surikiuojame pagal filmų trukmės vidurkius.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
-- 
+- Sukuriame grafiką 'Taškinė diagrama su filmu įvertinimais'.
+- Pasirenkame grafiko dydį, sukuriame taškinio išsibarstymo grafiką, nurodydami savo x, y ašis, taip pat taškų pisiskirstyma pagal įvertinimą, nusistatome savo spalvų paletę, taip pat pasirenkame jog taškų dydis priklauso nuo įvertinimo.
+- Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
+- Sukuriame grafiką 'Išleistų filmų pagal metus histograma'.
+- Sukuriame histogramą pasirinkdami metus kaip mūsų x ašies parametrą, stulpelių skaičių bei grafiko spalvą.
+- Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
+- Sukuriame grafiką 'Įvertinimo vidurkis kas 10 metų intervalus'.
+- Susikuriame nauja stulpelį mūsų naudojamame DataFrame, kuriame nurodome, kad imsim metus nuo 1910 kas 10 metu iki 2020 metų.
+-  Susigrupuojame duomenis pagal metų intervalus ir skaičiuojame įvertinimo vidurkius kiekvienam intervalui, duomenis taip pat yra surikiuojami nuo didžiausio įvertinimo vidurkio iki mažiausio. Sukuriame 'bar' tipo grafiką naudodami mūsų prieš tai sutvarkytus duomenis, pasirenkame stulpelių spalvas.
+- Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
 
 

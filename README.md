@@ -54,10 +54,11 @@ result = pd.concat([df1, df2])'.
 - print(popular_cert)'.
 - 'df' - tai DataFrame veiksmas, 'groupby' - grupuojame nurodytus duomenis, 'mean()' - randame vidurkį, 'sort_values' - rušiuojame reikšmes, 'ascending=True' - duomenys bus rodomi didėjimo tvarka.
 - Nurodome grafiko dydį: 'plt.figure(figsize=(10,9))'.
-- Nurodome grafiko pavadinimą: 'plt.title('Filmo reitingas pagal sertifikata')'.
+- Nurodome grafiko rūšį: 'popular_cert.plot(kind='bar')'.
+- Nurodome grafiko pavadinimą: 'plt.title('Filmo reitingas pagal sertifikatą')'.
 - Nurodome grafiko x ir y ašių pavadinimus:
 - 'plt.xlabel('Sertifikatas')
 -  plt.ylabel('Filmo reitingas')'.
-
+- Nurodome grafiko x ašies pasvirimo kampo dydį: 'plt.xticks(rotation=45)' ir komandą kurti bei rodyti grafiką: 'plt.show()'.
 
 

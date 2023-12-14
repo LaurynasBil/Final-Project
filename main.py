@@ -160,10 +160,10 @@ plt.show()                 # - Rodome grafiką
 
 ##### Grafikas Įvertinimo vidurkis kas 10 metų intervalus #####
 # Susikuriame naują stulpelį mūsų naudojamame DataFrame, kuriame nurodome kad imsim metus nuo 1910 kas 10 metu iki 2020 metų
-df['Year_Inteval'] = pd.cut(df['Year'], bins=range(1910, 2030, 10), right=False)
+df['Year_Interval'] = pd.cut(df['Year'], bins=range(1910, 2030, 10), right=False)
 # Susigrupuojame duomenis pagal metų intervalus ir skaičiuojame įvertinimo vidurkius kiekvienam intervalui
 # Duomenis taip pat yra surikiuojami nuo didžiausio įvertinimo vidurkio iki mažiausio
-sorted_data = df.groupby('Year_Inteval', observed=True)['Rating'].mean().reset_index().sort_values('Rating', ascending=False)
+sorted_data = df.groupby('Year_Interval', observed=True)['Rating'].mean().reset_index().sort_values('Rating', ascending=False)
 
 # Pasirenkame grafiko dydį
 plt.figure(figsize=(10,8))

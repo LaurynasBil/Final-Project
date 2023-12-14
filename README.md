@@ -29,6 +29,7 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - df = pd.read_csv('result.csv')'.
 - Savo duomenis irašome į SQl lentelę naudodami sukurtą funkciją 'scraping.py' faile:
 - 'duomenu_irasymas_sql(df)'.
+- 
 - Atliekame duomenų analizę.
 - Randam įvertinimų vidurkį, minimalią ir maximalią įvertinimų reikšmes:
 - 'avg_rating = df['Rating'].mean()     
@@ -41,17 +42,14 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus:
 - 'year_groups = df.groupby('Year').size()
 -  print(year_groups)'.
+-  
 - Atliekame duomenų vizualizaciją Matplotlib ir Seaborn bibliotekų pagalba.
 - Sukuriame grafiką 'Įvertinimų vidurkis pagal sertifikatą':
 - Susigrupuojame duomenis pagal sertifikatą ir įvertinimo vidutines reikšmes surikiuojame nuo didžiausios iki mažiausios.
 - 'popular_cert = df.groupby('Certificate')['Rating'].mean().sort_values(ascending=True)
 - Nurodome grafiko dydį: 'plt.figure(figsize=(10,9))'.
 - Nurodome grafiko rūšį: 'popular_cert.plot(kind='bar')'.
-- Nurodome grafiko pavadinimą: 'plt.title('Filmo įvertinimas pagal sertifikatą')'.
-- Nurodome grafiko x ir y ašių pavadinimus:
-- 'plt.xlabel('Sertifikatas')
--  plt.ylabel('Filmo įvertinimas')'.
-- Nurodome grafiko x ašies pasvirimo kampo dydį: 'plt.xticks(rotation=45)' ir komandą kurti bei rodyti grafiką: 'plt.show()'.
+- Nurodome grafiko pavadinimą, grafiko x bei y ašių pavadinimus ir grafiko x ašies pasvirimo kampo dydį, t.y. pasukame x ašį 45 kampu, kad tekstas nekristų vienas ant kito, rodome grafiką. 
 - Sukuriame grafiką 'Įvertinimo vidurkis pagal žanrą':
 - Susirašome visus galimus unikalius žanrus, susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro įvertinimų vidurkį.
 - Pasileidžiame 'for' ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame, kurie filmai turi nurodytą žanrą, atliekame vidutinio įvertinimo skaičiavimą su 'mean()' funkcija, žanro pavadinimą bei įvertinimo vidurkį įsirašome i sąrašą. Surikiuojame pagal vidutinį įvertinimą.

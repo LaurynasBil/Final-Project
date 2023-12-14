@@ -35,6 +35,13 @@ print(f'Maksimali filmo trukmė: {max_length} min')
 year_groups = df.groupby('Year').size()    # - filmų pasiskirstymas pagal metus
 print(year_groups)
 
+rows_with_year_above_2000 = df.loc[df['Year'] < 2000]   # - vykdo salyga iki 2000
+print(rows_with_year_above_2000)
+
+rows_with_year_above_2000 = df.loc[df['Year'] >= 2000]   # - vykdo salyga 2000 ir daugiau
+print(rows_with_year_above_2000)
+
+
 
 ##### Grafikas Įvertinimo vidurkis pagal sertifikatą #####
 # Susigrupuojame duomenis pagal sertifikatą ir įvertinimo vidutines reikšmes surikiuojame nuo didžiausios iki mažiausios

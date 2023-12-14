@@ -105,8 +105,7 @@ Išvados:
   Vidutinė filmų trukmė yra: 108.18 min
   Minimali filmo trukmė: 43 min
   Maksimali filmo trukmė: 739 min
-  Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus:
-
+  Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus.
 2. Atliekant duomenų vizualizaciją sukurėme grafiką `Įvertinimų vidurkis pagal sertifikatą`, jame susigrupavome duomenis pagal sertifikatą ir įvertinimo vidutines reikšmes surikiavome nuo didžiausios iki mažiausios. Iš grafiko matyti, kad didžiausias filmų įvertinimas yra grupėje 18+, toliau seka 13+, M/PG ir t.t., mažiausiai įvertinami grupėje TV-Y7-FV, TV-Y7, AO ir t.t.
 3. Sukurus grafiką `Įvertinimų vidurkis pagal žanrą` matyti, kad geriausias įvertinimų vidurkis yra nespalvotų, karo, biografinių, vesternų, istorinių filmų, mažiausias siaubo, mokslinės fantastikos, šeimos, fantastikos, veiksmo ir t.t.
 4. Sukurus grafiką `Filmų skaičius pagal žanrą` matyti, kad daugiausiai yra filmų, kurių žanrai yra drama, komedija, veiksmas, detektyvai, romantiniai ir t.t., mažiausiai yra siaubo filmų, vesternų, muzikinių, sporto, karinių ir t.t.

@@ -9,7 +9,7 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Po to nurodėme funkciją: 'def scrape(url):', kuri apima ir nuskaito visus duomenis iki funkcijos pabaigos:
 - 'df = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')'.
 - Ši funkcija apima visus joje esančius duomenis ir kitoje vietoje juos įkelia, kai tai nurodoma.
-- Toliau šioje funkcijoje atlikome kitą funkciją naudojant zip metodą. Sukūrėme for'ą išvardindami visų duomenų pavadinimus ir sukeldami juos į zip'ą, priskyrėme jiems išplėtimo reikšmes 'text' arba 'value', komandos 'int' pagalba nurodėme, kurie duomenys yra skaičiai, komandos 'replace' pagalba pakeitėme netinkamas reikšmes į tinkamas arba į tuščias vietas. Komandos 'movies_list.append({' pagalba duomenis ikėlėme.
+- Toliau šioje funkcijoje atlikome kitą funkciją naudojant 'zip' metodą. Sukūrėme 'for'ą' išvardindami visų duomenų pavadinimus ir sukeldami juos į 'zip'ą', priskyrėme jiems išplėtimo reikšmes 'text' arba 'value', komandos 'int' pagalba nurodėme, kurie duomenys yra skaičiai, komandos 'replace' pagalba pakeitėme netinkamas reikšmes į tinkamas arba į tuščias vietas. Komandos 'movies_list.append({' pagalba duomenis ikėlėme.
 - Komanda 'for movie in movies_list:
 -              data.append(movie)'   - nuskaito duomenis po vieną filmų sąrašą, t.y. pirmiausia nuskaito pirmo puslapio duomenis, po to antro bei sukelia juos sąrašo apačioje, po to trečio ir t.t.
 - Surinktus ir sutvarkytus duomenis sukelėme į Pandas DataFrame: 'df = pd.DataFrame(data)'.
@@ -24,13 +24,14 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Nurodėme komandą, kad sukeliame duomenis iš faile 'scrapint.py' įkeltų duomenų. Šis veiksmas atliekamas tam, kad nereikėtų kiekvieną kartą kreiptis į interneto svetainę ir tam skirti labai daug laiko:
 - 'df1 = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')
 - df2 = scrape('https://www.imdb.com/list/ls063676660/?st_dt=&mode=detail&page=')
-result = pd.concat([df1, df2])'.
-- Duomenis įrašome i csv failą, kad būtų galima lengviau su jais dirbti ir nereikėtu kreiptis į 'scraping.py' failą kiekvieną kartą kažką pakeitus:
+- result = pd.concat([df1, df2])'.
+- Duomenis įrašome i 'csv' failą, kad būtų galima lengviau su jais dirbti ir nereikėtu kreiptis į 'scraping.py' failą kiekvieną kartą kažką pakeitus:
 - 'result.to_csv("result.csv", index = False)
 - df = pd.read_csv('result.csv')'.
-- Savo duomenis irašome į SQl lentelę naudodami sukurtą funkciją kitame 'scraping.py' faile:
+- Savo duomenis irašome į SQl lentelę naudodami sukurtą funkciją 'scraping.py' faile:
 - 'duomenu_irasymas_sql(df)'.
-- Atliekame duomenų analizę. Randam įvertinimų vidurkį:
+- Atliekame duomenų analizę.
+- Randam įvertinimų vidurkį:
 - 'avg_rating = df['Rating'].mean()     
 - print(f'Vidutinis filmu reitingas yra: {avg_rating:.2f}')'.
 - Randam minimalią ir maximalią įvertinimų reikšmes:
@@ -48,7 +49,8 @@ result = pd.concat([df1, df2])'.
 - Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus:
 - 'year_groups = df.groupby('Year').size()
 -  print(year_groups)'.
-- Atliekame duomenų vizualizaciją Matplotlib ir Seaborn bibliotekų pagalba. Sukuriame grafiką 'Įvertinimų vidurkis pagal sertifikatą'.
+- Atliekame duomenų vizualizaciją Matplotlib ir Seaborn bibliotekų pagalba.
+- Sukuriame grafiką 'Įvertinimų vidurkis pagal sertifikatą'.
 - Parašome naują sutrumpintą pavadinimą 'popular_cert', kurį naudosime šiame kode, ir nurodome jam komandas:
 - 'popular_cert = df.groupby('Certificate')['Rating'].mean().sort_values(ascending=True)
 - print(popular_cert)'.

@@ -9,7 +9,7 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Po to nurodėme funkciją: 'def scrape(url):', kuri apima visus duomenis iki funkcijos pabaigos:
 - 'df = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')'.
 - Ši funkcija apima visus joje esančius duomenis ir kitoje vietoje juos įkelia, kai tai nurodoma.
-- Toliau šioje funkcijoje atlikome kitą funkciją naudojant zip metodą. Joje komandos 'int' pagalba nurodėme, kurie duomenys yra skaičiai, komandos 'replace' pagalba pakeitėme netinkamas reikšmes į tinkamas arba į tuščias vietas.
+- Toliau šioje funkcijoje atlikome kitą funkciją naudojant zip metodą. Sukūrėme for'ą išvardindami visų duomenų pavadinimus ir sukeldami juos į zip'ą, priskyrėme jiems išplėtimo reikšmes 'text' arba 'value', komandos 'int' pagalba nurodėme, kurie duomenys yra skaičiai, komandos 'replace' pagalba pakeitėme netinkamas reikšmes į tinkamas arba į tuščias vietas. Komandos 'movies_list.append({' pagalba duomenis ikėlėme.
 - 'for movie in movies_list:
 - data.append(movie)'   - ši komanda nuskaito duomenis po vieną filmų sąrašą, t.y. pirmiausia nuskaito pirmo puslapio duomenis, po to antro bei sukelia juos sąrašo apačioje ir t.t.
 - Surinktus ir sutvarkytus duomenis sukelėme į Pandas DataFrame: 'df = pd.DataFrame(data)'.

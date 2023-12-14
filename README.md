@@ -1,5 +1,8 @@
 Projekto Pavadinimas: Kino Filmų Reitingų Analizė
 
+Projekto tikslas: Išmokti dirbti su realiais duomenimis, taikyti duomenų valymo ir analizės metodus bei pateikti įžvalgas per įvairias vizualizacijas. Sugebėti surinkti duomenis apie kino filmus iš interneto, analizuoti juos ir vizualizuoti gautus rezultatus.
+
+Projekto vykdymo eiga:
 Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisvai prieinama ir kurios duomenimis gali naudotis vartotojai. Pasirinkome šiuos duomenis: pavadinimus, metus, serifikatus, filmo laiką, žanrus ir įvertinimus, išrinkome jų klases ir BeautifulSoup 4 (bs4) bibliotekos pagalba nuskaitėme duomenis iš svetainės. 
 - Projekto pirmą failą pavadinome 'scraping.py' ir jame vykdėme duomenų įkėlimą ir jų tvarkymą.
 - Projekto pradžioje importavome reikalingas bibliotekas:
@@ -72,7 +75,7 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
  ![fig2](https://github.com/LaurynasBil/Final-Project/blob/main/fig2.png) 
 - Sukuriame grafiką `Filmų skaičius pagal žanrą`:
 - Susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro išleistų filmų skaičių.
-- Pasileidžiame `for` ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame kurie filmai turi nurodyta žanrą, atliekame filmų apskaičiavimą pagal žanrą su 'count()' funkcija, žanro pavadinimą bei filmų kiekį tam žanrui - įsirašome i sąrašą. Surikiuojame pagal filmų skaičių.
+- Pasileidžiame `for` ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame kurie filmai turi nurodyta žanrą, atliekame filmų apskaičiavimą pagal žanrą su 'count()' funkcija, žanro pavadinimą bei filmų kiekį tam žanrui - įsirašome į sąrašą. Surikiuojame pagal filmų skaičių.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
  ![fig3](https://github.com/LaurynasBil/Final-Project/blob/main/fig3.png)
 - Sukuriame grafiką `Vidutinė filmo trukmė pagal žanrą`.
@@ -94,4 +97,19 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
  ![fig7](https://github.com/LaurynasBil/Final-Project/blob/main/fig7.png)
 
-
+Išvados:
+1. Išanalizavus sukeltus duomenis ir atlikus duomenų analizę nustatėme, kad: 
+  Vidutinis filmų įvertinimas yra: 6.56
+  Minimalus filmų įvertinimas: 1.2
+  Maksimalus filmų įvertinimas: 9.3
+  Vidutinė filmų trukmė yra: 108.18 min
+  Minimali filmo trukmė: 43 min
+  Maksimali filmo trukmė: 739 min
+  Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus.
+2. Atliekant duomenų vizualizaciją sukurėme grafiką `Įvertinimų vidurkis pagal sertifikatą`, jame susigrupavome duomenis pagal sertifikatą ir įvertinimo vidutines reikšmes surikiavome nuo didžiausios iki mažiausios. Iš grafiko matyti, kad didžiausias filmų įvertinimas yra grupėje 18+, toliau seka 13+, M/PG ir t.t., mažiausiai įvertinami grupėje TV-Y7-FV, TV-Y7, AO ir t.t.
+3. Sukurus grafiką `Įvertinimų vidurkis pagal žanrą` matyti, kad geriausias įvertinimų vidurkis yra nespalvotų, karo, biografinių, vesternų, istorinių filmų, mažiausias siaubo, mokslinės fantastikos, šeimos, fantastikos, veiksmo ir t.t.
+4. Sukurus grafiką `Filmų skaičius pagal žanrą` matyti, kad daugiausiai yra filmų, kurių žanrai yra drama, komedija, veiksmas, detektyvai, romantiniai ir t.t., mažiausiai yra siaubo filmų, vesternų, muzikinių, sporto, karinių ir t.t.
+5. Sukurus grafiką 'Vidutinė filmo trukmė pagal žanrą` matyti, kad ilgiausi filmai yra istoriniai, muzikiniai, kariniai, biografiniai, vesterno ir t.t, trumpiausi yra animaciniai, siaubo, nespalvoti, komedijų, šeimos ir .t.t
+6. Sukurus grafiką 'Taškinė diagrama su filmu įvertinimais` matyti, kad senesnių filmų įvertinimai daugiausiai buvo aukšti. Kuo vėlesniais metais daugiau buvo išleidžiama filmų, tuo jų pasiskirstymas įvertinimo skalėje darėsi įvairesnis, daugėjo blogiau vertinamų filmų. Grafiko legendoje pateikta informacija, kokios spalvos ir kokio dydžio rutuliukai ką nurodo. Kuo didesni rutuliukai, tuo didesni įvertinimai, spalvos parodo vertinimo skalę.
+7. Sukurus grafiką 'Išleistų filmų pagal metus histograma` matyti, kad mažiausiai buvo išleista filmų XX amžiaus pradžioje, jų nelabai daug daugiau daugėjo iki maždaug 1970 metų ir labai žymiai daugiau išleisdavo nuo maždaug 1990 metų. Daugiausiai išleido 2010 metai, po to truputį sumažėjo.
+8. Sukurus grafiką 'Įvertinimo vidurkis kas 10 metų intervalus` matyti, kad aukščiausias įvertinamo vidurkis yra tų filmų, kurie buvo išleisti 1920-1930 metais, po to įvertinimo vidurkis mažėja ir pats mažiausias 2010-2020 metais išleistų filmų vidurkis. Taip yra todėl, kad seniausiai išleistų filmų buvo nedaug ir jų vertinimai nedaug skiriasi, o vėlesniais laikotarpiais daugėjant išleidžiamų filmų skaičiui tarp gerų filmų yra daug blogos kokybės filmų ir bendras įvertinimo vidurkis yra žemesnis.

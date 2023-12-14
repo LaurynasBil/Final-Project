@@ -9,10 +9,9 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Po to nurodėme funkciją: 'def scrape(url):', kuri apima ir nuskaito visus duomenis iki funkcijos pabaigos:
 - 'df = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')'.
 - Ši funkcija apima visus joje esančius duomenis ir kitoje vietoje juos įkelia, kai tai nurodoma.
-- Toliau šioje funkcijoje atlikome kitą funkciją naudojant 'zip' metodą. Sukūrėme 'for'ą' išvardindami visų duomenų pavadinimus ir sukeldami juos į 'zip'ą', priskyrėme jiems išplėtimo reikšmes 'text' arba 'value', komandos 'int' pagalba nurodėme, kurie duomenys yra skaičiai, komandos 'replace' pagalba pakeitėme netinkamas reikšmes į tinkamas arba į tuščias vietas. Komandos 'movies_list.append({' pagalba duomenis ikėlėme.
-- Komanda 'for movie in movies_list:
--              data.append(movie)'   - nuskaito duomenis po vieną filmų sąrašą, t.y. pirmiausia nuskaito pirmo puslapio duomenis, po to antro bei sukelia juos sąrašo apačioje, po to trečio ir t.t.
-- Surinktus ir sutvarkytus duomenis sukelėme į Pandas DataFrame: 'df = pd.DataFrame(data)'.
+- Toliau šioje funkcijoje atlikome kitą funkciją naudojant 'zip' metodą. Sukūrėme 'for'ą' išvardindami visų duomenų pavadinimus ir sukeldami juos į 'zip'ą', priskyrėme jiems išplėtimo reikšmes 'text' arba 'value'; komandos 'int' pagalba nurodėme, kurie duomenys yra skaičiai, komandos 'replace' pagalba pakeitėme netinkamas reikšmes į tinkamas arba į tuščias vietas. Komandos 'movies_list.append({' pagalba duomenis ikėlėme.
+- Komanda 'for movie in movies_list: data.append(movie)' - nuskaito duomenis po vieną filmų sąrašą, t.y. pirmiausia nuskaito pirmo puslapio duomenis, po to antro bei sukelia juos sąrašo apačioje, po to trečio ir t.t.
+- Surinktus ir sutvarkytus duomenis sukėlėme į Pandas DataFrame: 'df = pd.DataFrame(data)'.
 - Nurodėme, kad panaikintų pasikartojančius filmus: 'df.drop_duplicates(['Title'])'.
 - Komanda 'if __name__ == "__main__":' nurodo, kad šis kodas bus vykdomas tik jei tekstas paleistas kaip pagrindinė (main) programa.
 - Sukūrėme antrą projekto failą, kurį pavadinome 'main.py'. Pradžioje vėl importavome reikalingas bibliotekas:
@@ -21,46 +20,57 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - from writesql import duomenu_irasymas_sql
 - import matplotlib.pyplot as plt
 - import seaborn as sns'.
-- Nurodėme komandą, kad sukeliame duomenis iš faile 'scrapint.py' įkeltų duomenų. Šis veiksmas atliekamas tam, kad nereikėtų kiekvieną kartą kreiptis į interneto svetainę ir tam skirti labai daug laiko:
+- Vykdome duomenų nuskaitymą ir įrašymą per mūsų sukurtą 'scrape' funkciją, kuri grąžina DataFrame:
 - 'df1 = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')
 - df2 = scrape('https://www.imdb.com/list/ls063676660/?st_dt=&mode=detail&page=')
 - result = pd.concat([df1, df2])'.
-- Duomenis įrašome i 'csv' failą, kad būtų galima lengviau su jais dirbti ir nereikėtu kreiptis į 'scraping.py' failą kiekvieną kartą kažką pakeitus:
+- Duomenis įrašome i csv failą, kad nereikėtų kiekvieną karta laukti kol surinks duomenis iš svetainės:
 - 'result.to_csv("result.csv", index = False)
 - df = pd.read_csv('result.csv')'.
 - Savo duomenis irašome į SQl lentelę naudodami sukurtą funkciją 'scraping.py' faile:
 - 'duomenu_irasymas_sql(df)'.
+- 
 - Atliekame duomenų analizę.
-- Randam įvertinimų vidurkį:
+- Randam įvertinimų vidurkį, minimalią ir maximalią įvertinimų reikšmes:
 - 'avg_rating = df['Rating'].mean()     
-- print(f'Vidutinis filmu reitingas yra: {avg_rating:.2f}')'.
-- Randam minimalią ir maximalią įvertinimų reikšmes:
+- print(f'Vidutinis filmu įvertinimas yra: {avg_rating:.2f}')'.
 - 'min_rating = df['Rating'].min()
-- print(f'Minimalus filmu reitingas: {min_rating}')
+- print(f'Minimalus filmų įvertinimas: {min_rating}')
 - max_rating = df['Rating'].max()
-- print(f'Maksimalus filmu reitingas: {max_rating}')'.
-- Taip pat randam filmų laiko vidurkį, minimalią ir maximalią filmų laiko reikšmes:
-- 'avg_length = df['Length'].mean()
-- print(f'Vidutinis filmu laikas yra: {avg_length:.2f} min')
-- min_length = df['Length'].min()
-- print(f'Minimalus filmo laikas: {min_length} min')
-- max_length = df['Length'].max()
-- print(f'Maksimalus filmo laikas: {max_length} min')'.
+- print(f'Maksimalus filmų įvertinimas: {max_rating}')'.
+- Taip pat randam filmų laiko vidurkį, minimalią ir maximalią filmų laiko reikšmes.
 - Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus:
 - 'year_groups = df.groupby('Year').size()
 -  print(year_groups)'.
+-  
 - Atliekame duomenų vizualizaciją Matplotlib ir Seaborn bibliotekų pagalba.
-- Sukuriame grafiką 'Įvertinimų vidurkis pagal sertifikatą'.
-- Parašome naują sutrumpintą pavadinimą 'popular_cert', kurį naudosime šiame kode, ir nurodome jam komandas:
+- Sukuriame grafiką 'Įvertinimų vidurkis pagal sertifikatą':
+- Susigrupuojame duomenis pagal sertifikatą ir įvertinimo vidutines reikšmes surikiuojame nuo didžiausios iki mažiausios.
 - 'popular_cert = df.groupby('Certificate')['Rating'].mean().sort_values(ascending=True)
-- print(popular_cert)'.
-- 'df' - tai DataFrame veiksmas, 'groupby' - grupuojame nurodytus duomenis, 'mean()' - randame vidurkį, 'sort_values' - rušiuojame reikšmes, 'ascending=True' - duomenys bus rodomi didėjimo tvarka.
 - Nurodome grafiko dydį: 'plt.figure(figsize=(10,9))'.
 - Nurodome grafiko rūšį: 'popular_cert.plot(kind='bar')'.
-- Nurodome grafiko pavadinimą: 'plt.title('Filmo įvertinimas pagal sertifikatą')'.
-- Nurodome grafiko x ir y ašių pavadinimus:
-- 'plt.xlabel('Sertifikatas')
--  plt.ylabel('Filmo įvertinimas')'.
-- Nurodome grafiko x ašies pasvirimo kampo dydį: 'plt.xticks(rotation=45)' ir komandą kurti bei rodyti grafiką: 'plt.show()'.
+- Nurodome grafiko pavadinimą, grafiko x bei y ašių pavadinimus ir grafiko x ašies pasvirimo kampo dydį, t.y. pasukame x ašį 45 kampu, kad tekstas nekristų vienas ant kito, rodome grafiką. 
+- Sukuriame grafiką 'Įvertinimo vidurkis pagal žanrą':
+- Susirašome visus galimus unikalius žanrus, susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro įvertinimų vidurkį.
+- Pasileidžiame 'for' ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame, kurie filmai turi nurodytą žanrą, atliekame vidutinio įvertinimo skaičiavimą su 'mean()' funkcija, žanro pavadinimą bei įvertinimo vidurkį įsirašome i sąrašą. Surikiuojame pagal vidutinį įvertinimą.
+- Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
+- Sukuriame grafiką 'Filmų skaičius pagal žanrą':
+- Susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro išleistų filmų skaičių.
+- Pasileidžiame 'for' ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame kurie filmai turi nurodyta žanrą, atliekame filmų apskaičiavimą pagal žanrą su 'count()' funkcija, žanro pavadinimą bei filmų kiekį tam žanrui įsirašome i sąrašą. Surikiuojame pagal filmų skaičių.
+- Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
+- Sukuriame grafiką 'Vidutinė filmo trukmė pagal žanrą'.
+- Susikuriame naują sąraša kuriame rinksime informacija apie kiekvieno unikalaus žanro filmų trukmės vidurkį.
+- Pasileidžiame 'for' ciklą kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame kurie filmai turi nurodyta žanrą, atliekame vidutinės trukmės skaičiavima su 'mean()' funkcija, žanro pavadinimą bei filmų trukmės vidurkį įsirašome į sąrašą. Surikiuojame pagal filmų trukmės vidurkius.
+- Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
+- Sukuriame grafiką 'Taškinė diagrama su filmu įvertinimais'.
+- Pasirenkame grafiko dydį, sukuriame taškinio išsibarstymo grafiką, nurodydami savo x, y ašis, taip pat taškų pisiskirstyma pagal įvertinimą, nusistatome savo spalvų paletę, taip pat pasirenkame jog taškų dydis priklauso nuo įvertinimo.
+- Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
+- Sukuriame grafiką 'Išleistų filmų pagal metus histograma'.
+- Sukuriame histogramą pasirinkdami metus kaip mūsų x ašies parametrą, stulpelių skaičių bei grafiko spalvą.
+- Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
+- Sukuriame grafiką 'Įvertinimo vidurkis kas 10 metų intervalus'.
+- Susikuriame nauja stulpelį mūsų naudojamame DataFrame, kuriame nurodome, kad imsim metus nuo 1910 kas 10 metu iki 2020 metų.
+-  Susigrupuojame duomenis pagal metų intervalus ir skaičiuojame įvertinimo vidurkius kiekvienam intervalui, duomenis taip pat yra surikiuojami nuo didžiausio įvertinimo vidurkio iki mažiausio. Sukuriame 'bar' tipo grafiką naudodami mūsų prieš tai sutvarkytus duomenis, pasirenkame stulpelių spalvas.
+- Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
 
 

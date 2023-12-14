@@ -38,6 +38,16 @@ result = pd.concat([df1, df2])'.
 - print(f'Minimalus filmu reitingas: {min_rating}')
 - max_rating = df['Rating'].max()
 - print(f'Maksimalus filmu reitingas: {max_rating}')'.
+- Taip pat randam filmu laiko vidurkį, minimalią ir maximalią filmų laiko reikšmes:
+- 'avg_length = df['Length'].mean()
+- print(f'Vidutinis filmu laikas yra: {avg_length:.2f} min')
+- min_length = df['Length'].min()
+- print(f'Minimalus filmo laikas: {min_length} min')
+- max_length = df['Length'].max()
+- print(f'Maksimalus filmo laikas: {max_length} min')'.
+- Apskaičiuojame filmų pasiskirstymą pagal metus:
+- 'year_groups = df.groupby('Year').size()
+-  print(year_groups)'.
 
 
 

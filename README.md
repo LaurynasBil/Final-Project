@@ -6,7 +6,7 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - 'from bs4 import BeautifulSoup
 - import pandas as pd
 - import requests'.
-- Po to nurodėme funkciją: 'def scrape(url):', kuri apima visus duomenis iki funkcijos pabaigos:
+- Po to nurodėme funkciją: 'def scrape(url):', kuri apima ir nuskaito visus duomenis iki funkcijos pabaigos:
 - 'df = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')'.
 - Ši funkcija apima visus joje esančius duomenis ir kitoje vietoje juos įkelia, kai tai nurodoma.
 - Toliau šioje funkcijoje atlikome kitą funkciją naudojant zip metodą. Sukūrėme for'ą išvardindami visų duomenų pavadinimus ir sukeldami juos į zip'ą, priskyrėme jiems išplėtimo reikšmes 'text' arba 'value', komandos 'int' pagalba nurodėme, kurie duomenys yra skaičiai, komandos 'replace' pagalba pakeitėme netinkamas reikšmes į tinkamas arba į tuščias vietas. Komandos 'movies_list.append({' pagalba duomenis ikėlėme.

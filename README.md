@@ -55,8 +55,13 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Sukuriame grafiką 'Įvertinimo vidurkis pagal žanrą':
 - Susirašome visus galimus unikalius žanrus, susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro įvertinimų vidurkį.
 - Pasileidžiame 'for' ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus.
+- Surandame, kurie filmai turi nurodyta žanrą, atliekame vidutinio įvertinimo skaičiavimą su mean() funkcija, žanro pavadinimą bei įvertinimo vidurkį įsirašome i sąrašą,
+surikiuojame pagal vidutinį įvertinimą.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
 - Sukuriame grafiką 'Filmų skaičius pagal žanrą':
+- Susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro išleistų filmų skaičių, pasileidžiame for ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus.
+- Surandame kurie filmai turi nurodyta žanrą, atliekame filmų apskaičiavimą pagal žanrą su 'count()' funkcija, žanro pavadinimą bei filmų kiekį tam žanrui įsirašome i sąrašą,
+surikiuojame pagal filmų skaičių.
+- Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
 - 
-
 

@@ -166,7 +166,7 @@ df['Year_Inteval'] = pd.cut(df['Year'], bins=range(1910, 2030, 10), right=False)
 sorted_data = df.groupby('Year_Inteval', observed=True)['Rating'].mean().reset_index().sort_values('Rating', ascending=False)
 
 # Pasirenkame grafiko dydį
-plt.figure(figsize=(10,8))
+plt.figure(figsize=(10,10))
 # Sukuriame 'bar' tipo grafiką naudodami mūsų prieš tai sutvarkytus duomenis, pasirenkame spalvas stulpelių
 plt.bar(sorted_data['Year_Inteval'].astype(str), sorted_data['Rating'], color='royalblue', edgecolor='black')
 # Pridedame ašies pavadinimus ir grafiko pavadinimą

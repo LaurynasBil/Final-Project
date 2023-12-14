@@ -54,14 +54,16 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Nurodome grafiko x ašies pasvirimo kampo dydį: 'plt.xticks(rotation=45)' ir komandą kurti bei rodyti grafiką: 'plt.show()'.
 - Sukuriame grafiką 'Įvertinimo vidurkis pagal žanrą':
 - Susirašome visus galimus unikalius žanrus, susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro įvertinimų vidurkį.
-- Pasileidžiame 'for' ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus.
-- Surandame, kurie filmai turi nurodyta žanrą, atliekame vidutinio įvertinimo skaičiavimą su mean() funkcija, žanro pavadinimą bei įvertinimo vidurkį įsirašome i sąrašą,
-surikiuojame pagal vidutinį įvertinimą.
+- Pasileidžiame 'for' ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame, kurie filmai turi nurodytą žanrą, atliekame vidutinio įvertinimo skaičiavimą su 'mean()' funkcija, žanro pavadinimą bei įvertinimo vidurkį įsirašome i sąrašą. Surikiuojame pagal vidutinį įvertinimą.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
 - Sukuriame grafiką 'Filmų skaičius pagal žanrą':
-- Susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro išleistų filmų skaičių, pasileidžiame for ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus.
-- Surandame kurie filmai turi nurodyta žanrą, atliekame filmų apskaičiavimą pagal žanrą su 'count()' funkcija, žanro pavadinimą bei filmų kiekį tam žanrui įsirašome i sąrašą,
-surikiuojame pagal filmų skaičių.
+- Susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro išleistų filmų skaičių.
+- Pasileidžiame 'for' ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame kurie filmai turi nurodyta žanrą, atliekame filmų apskaičiavimą pagal žanrą su 'count()' funkcija, žanro pavadinimą bei filmų kiekį tam žanrui įsirašome i sąrašą. Surikiuojame pagal filmų skaičių.
+- Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
+- Sukuriame grafiką 'Vidutinė filmo trukmė pagal žanrą'.
+- Susikuriame naują sąraša kuriame rinksime informacija apie kiekvieno unikalaus žanro filmų trukmės vidurkį.
+- Pasileidžiame 'for' ciklą kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame kurie filmai turi nurodyta žanrą, atliekame vidutinės trukmės skaičiavima su 'mean()' funkcija, žanro pavadinimą bei filmų trukmės vidurkį įsirašome į sąrašą. Surikiuojame pagal filmų trukmės vidurkius.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
 - 
+
 

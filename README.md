@@ -22,8 +22,8 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - import matplotlib.pyplot as plt
 - import seaborn as sns'.
 - Nurodėme komandą, kad sukeliame duomenis iš faile 'scrapint.py' įkeltų duomenų. Šis veiksmas atliekamas tam, kad nereikėtų kiekvieną kartą kreiptis į interneto svetainę ir tam skirti labai daug laiko:
-'df1 = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')
-df2 = scrape('https://www.imdb.com/list/ls063676660/?st_dt=&mode=detail&page=')
+- 'df1 = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')
+- df2 = scrape('https://www.imdb.com/list/ls063676660/?st_dt=&mode=detail&page=')
 result = pd.concat([df1, df2])'.
 - Duomenis įrašome i csv failą, kad būtų galima lengviau su jais dirbti ir nereikėtu kreiptis į 'scraping.py' failą kiekvieną kartą kažką pakeitus:
 - 'result.to_csv("result.csv", index = False)

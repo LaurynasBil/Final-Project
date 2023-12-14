@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt             # įsikeliame matplotlib.pyplot darb
 import seaborn as sns                       # įsikeliame seaborn darbui su grafikais, pasivadiname jį 'sns'
 
 
-# Vykdome duomenų nuskaitymą ir įrašymą per mūsų sukurtą 'scrape' funkciją, kuri grąžina DataFrame
+# Vykdome duomenų nuskaitymą ir įrašymą per mūsų sukurtą scrape funkciją, kuri grąžina DataFrame
 df1 = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')
 df2 = scrape('https://www.imdb.com/list/ls063676660/?st_dt=&mode=detail&page=')
 # Apjungiame mūsų abu DataFrames į vieną, kad galėtume toliau vykdyti duomenų analizę
 result = pd.concat([df1, df2])
-# Duomenis įrašome i csv failą, kad nereikėtų kiekvieną kartą laukti, kol surinks duomenis iš svetainės
+# Duomenis įrašome į csv failą, kad nereikėtų kiekvieną kartą laukti, kol surinks duomenis iš svetainės
 result.to_csv("result.csv", index = False)
 df = pd.read_csv('result.csv')
 # Taip pat duomenis įsirašome į savo duombazę per mūsų sukurtą funkciją 'duomenu_irasymas_sql'
@@ -42,7 +42,7 @@ popular_cert = df.groupby('Certificate')['Rating'].mean().sort_values(ascending=
 
 # Pasirenkame grafiko dydį
 plt.figure(figsize=(12, 9))
-# Savo sugrupuotus duomenis pasirenkame atvaizduoti 'bar' tipo grafike, pasikeičiam linijų spalvas bei dydį
+# Savo sugrupuotus duomenis pasirenkame atvaizduoti bar tipo grafike, pasikeičiam linijų spalvas bei dydį
 popular_cert.plot(kind='bar', color='khaki', edgecolor='grey', linewidth=2.5)
 # Pridedame ašies pavadinimus ir grafiko pavadinimą
 plt.title('Filmo įvertinimas pagal sertifikata')
@@ -167,7 +167,7 @@ sorted_data = df.groupby('Year_Inteval', observed=True)['Rating'].mean().reset_i
 
 # Pasirenkame grafiko dydį
 plt.figure(figsize=(10,8))
-# Sukuriame 'bar' tipo grafiką naudodami mūsų prieš tai sutvarkytus duomenis, pasirenkame stulpelių spalvas
+# Sukuriame bar tipo grafiką naudodami mūsų prieš tai sutvarkytus duomenis, pasirenkame stulpelių spalvas
 plt.bar(sorted_data['Year_Inteval'].astype(str), sorted_data['Rating'], color='royalblue', edgecolor='black')
 # Pridedame ašies pavadinimus ir grafiko pavadinimą
 plt.xlabel('10 metų intervalai')

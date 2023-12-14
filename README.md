@@ -10,10 +10,10 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - 'df = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')'.
 - Ši funkcija apima visus joje esančius duomenis ir kitoje vietoje juos įkelia, kai tai nurodoma.
 - Toliau šioje funkcijoje atlikome kitą funkciją naudojant zip metodą. Sukūrėme for'ą išvardindami visų duomenų pavadinimus ir sukeldami juos į zip'ą, priskyrėme jiems išplėtimo reikšmes 'text' arba 'value', komandos 'int' pagalba nurodėme, kurie duomenys yra skaičiai, komandos 'replace' pagalba pakeitėme netinkamas reikšmes į tinkamas arba į tuščias vietas. Komandos 'movies_list.append({' pagalba duomenis ikėlėme.
-- 'for movie in movies_list:
-- data.append(movie)'   - ši komanda nuskaito duomenis po vieną filmų sąrašą, t.y. pirmiausia nuskaito pirmo puslapio duomenis, po to antro bei sukelia juos sąrašo apačioje ir t.t.
+- Komanda 'for movie in movies_list:
+-              data.append(movie)'   - nuskaito duomenis po vieną filmų sąrašą, t.y. pirmiausia nuskaito pirmo puslapio duomenis, po to antro bei sukelia juos sąrašo apačioje, po to trečio ir t.t.
 - Surinktus ir sutvarkytus duomenis sukelėme į Pandas DataFrame: 'df = pd.DataFrame(data)'.
-- Nurodėme, kad panaikintų pasikartojančius filmus: 'df.drop_duplicates(['Title'])' ir kartotų df: 'return df'.
+- Nurodėme, kad panaikintų pasikartojančius filmus: 'df.drop_duplicates(['Title'])'.
 - Komanda 'if __name__ == "__main__":' nurodo, kad šis kodas bus vykdomas tik jei tekstas paleistas kaip pagrindinė (main) programa.
 - Sukūrėme antrą projekto failą, kurį pavadinome 'main.py'. Pradžioje vėl importavome reikalingas bibliotekas:
 - 'import pandas as pd
@@ -30,6 +30,14 @@ result = pd.concat([df1, df2])'.
 - df = pd.read_csv('result.csv')'.
 - Savo duomenis irašome į SQl lentelę naudodami sukurtą funkciją kitame 'scraping.py' faile:
 - 'duomenu_irasymas_sql(df)'.
+- Atliekame duomenų analizę. Randam įvertinimų vidurkį:
+- 'avg_rating = df['Rating'].mean()     
+- print(f'Vidutinis filmu reitingas yra: {avg_rating:.2f}')'.
+- Randam minimalią ir maximalią įvertinimų reikšmes:
+- 'min_rating = df['Rating'].min()
+- print(f'Minimalus filmu reitingas: {min_rating}')
+- max_rating = df['Rating'].max()
+- print(f'Maksimalus filmu reitingas: {max_rating}')'.
 
 
 

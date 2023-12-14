@@ -17,10 +17,10 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Komanda 'if __name__ == "__main__":' nurodo, kad šis kodas bus vykdomas tik jei tekstas paleistas kaip pagrindinė (main) programa.
 - Sukūrėme antrą projekto failą, kurį pavadinome 'main.py'. Pradžioje vėl importavome reikalingas bibliotekas:
 - 'import pandas as pd
-from scraping import scrape
-from writesql import duomenu_irasymas_sql
-import matplotlib.pyplot as plt
-import seaborn as sns'.
+- from scraping import scrape
+- from writesql import duomenu_irasymas_sql
+- import matplotlib.pyplot as plt
+- import seaborn as sns'.
 - Nurodėme komandą, kad sukeliame duomenis iš faile 'scrapint.py' įkeltų duomenų. Šis veiksmas atliekamas tam, kad nereikėtų kiekvieną kartą kreiptis į interneto svetainę ir tam skirti labai daug laiko:
 'df1 = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')
 df2 = scrape('https://www.imdb.com/list/ls063676660/?st_dt=&mode=detail&page=')

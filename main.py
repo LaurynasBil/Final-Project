@@ -1,157 +1,178 @@
-import pandas as pd
-from scraping import scrape
-from writesql import duomenu_irasymas_sql
-import matplotlib.pyplot as plt
-import seaborn as sns
+import pandas as pd                         # įsikeliame pandas darbui su DataFrame
+from scraping import scrape                 # įsikeliame mūsų sukurta funkcija scrape iš scraping failo
+from writesql import duomenu_irasymas_sql   # įsikeliame mūsų sukurta funkcija duomenu_irasymas_sql iš writesql failo
+import matplotlib.pyplot as plt             # įsikeliame matplotlib.pyplot darbui su grafikais pasivadiname jį 'plt'
+import seaborn as sns                       # įsikeliame seaborn darbui su grafikais pasivadiname jį 'sns'
 
-# df1 = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')
-# df2 = scrape('https://www.imdb.com/list/ls063676660/?st_dt=&mode=detail&page=')
-# result = pd.concat([df1, df2])
-# Duomenis įrašome i csv failą kad butu galima lengviau su jais dirbti
-# ir nereikėtu scrapinti kiekviena karta kazka pakeitus
-# result.to_csv("result.csv", index = False)
+
+# Vykdome duomenu nuskaitymą ir įrašymą per mūsų sukurta 'scrape' funkcija kuri gražina DataFrame
+df1 = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')
+df2 = scrape('https://www.imdb.com/list/ls063676660/?st_dt=&mode=detail&page=')
+# Apjungiame mūsų abu DataFrames i vieną kad galėtume toliau vykdyti duomenu analinze
+result = pd.concat([df1, df2])
+# Duomenis įrašome i csv failą, kad nereikėtų kiekvieną karta laukti kol surinks duomenis iš svetainės
+result.to_csv("result.csv", index = False)
 df = pd.read_csv('result.csv')
-# Savo duomenis irasome i SQl lentele naudodami sukurta funkcija kitame faile
-# duomenu_irasymas_sql(df)
+# Taip pat duomenis įsirašome i savo duombaze per mūsų sukurta funkcija 'duomenu_irasymas_sql'
+# kur reikia nurodyti DataFrame kuri naudosime įrašymui
+duomenu_irasymas_sql(df)
 
 ##### Duomenu Analizė #####
-avg_rating = df['Rating'].mean()      # - reitingu vidurkis
-print(f'Vidutinis filmu įvertinimas yra: {avg_rating:.2f}')
-min_rating = df['Rating'].min()   # - randam minimalia ir maximalia reiksme
-print(f'Minimalus filmu įvertinimas: {min_rating}')
-max_rating = df['Rating'].max()
-print(f'Maksimalus filmu įvertinimas: {max_rating}')
+avg_rating = df['Rating'].mean()      # - įvertinimų vidurkis
+print(f'Vidutinis filmų įvertinimas yra: {avg_rating:.2f}')
+min_rating = df['Rating'].min()   # - randam minimalia įvertinimų reikšme
+print(f'Minimalus filmų įvertinimas: {min_rating}')
+max_rating = df['Rating'].max()  # - randam maksimalia įvertinimų reikšme
+print(f'Maksimalus filmų įvertinimas: {max_rating}')
 
-avg_length = df['Length'].mean()    # - filmu laiko vidurkis
+avg_length = df['Length'].mean()    # - filmu trukmės vidurkis
 print(f'Vidutinė filmų trukmė yra: {avg_length:.2f} min')
-min_length = df['Length'].min()   # - randam minimalia ir maximalia reiksme
+min_length = df['Length'].min()   # - randam minimalia trukmės reikšme
 print(f'Minimali filmo trukmė: {min_length} min')
-max_length = df['Length'].max()
+max_length = df['Length'].max()  # - randam maksimalia trukmės reikšme
 print(f'Maksimali filmo trukmė: {max_length} min')
 
 year_groups = df.groupby('Year').size()    # - filmu pasiskirstymas pagal metus
-# print(year_groups)
+print(year_groups)
 
 
-##### Grafikas Reitingo vidurkis pagal sertifikatą #####
+##### Grafikas Įvertinimo vidurkis pagal sertifikatą #####
+# Susigrupuojame duomenis pagal sertifikatą ir įvertinimo vidutines reikšmes surikiuojame nuo didžiausios iki mažiausios
 popular_cert = df.groupby('Certificate')['Rating'].mean().sort_values(ascending=False)
 
+# Pasirenkame grafiko dydį
 plt.figure(figsize=(12, 9))
+# Savo sugrupuotus duomenis pasirenkame atvaizduoti 'bar' tipo grafike, pasikeičiam liniju spalvas bei dydį
 popular_cert.plot(kind='bar', color='khaki', edgecolor='grey', linewidth=2.5)
-plt.title('Filmo reitingas pagal sertifikata')
+# Pridedame ašies pavadinimus ir grafiko pavadinimą
+plt.title('Filmo įvertinimas pagal sertifikata')
 plt.xlabel('Sertifikatas')
-plt.ylabel('Filmo reitingas')
-plt.xticks(rotation=45, ha='right')
-plt.show()
+plt.ylabel('Filmo įvertinimas')
+plt.xticks(rotation=45)  # - Pasukame x ašį 45 kampu, kad tekstas nekirstų vienas ant kito
+plt.show()              # - Rodome grafiką
 ########################################################
 
 
-##### Grafikas Reitingo vidurkis pagal žanrą #####
-# Susirašome visus galimus žanrus
+##### Grafikas Įvertinimo vidurkis pagal žanrą #####
+# Susirašome visus galimus unikalius žanrus
 unique_genres = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Drama', 'Family', 'Fantasy',
                    'Film-Noir', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Sport',
                    'Thriller', 'War', 'Western']
-# Sukurkime grafiką su stulpeliais kiekvienam žanrui
+# Susikuriame naują sąraša kuriame rinksime informacija apie kiekvieno unikalaus žanro įvertinimų vidurkį
 average_ratings = []
+# Pasileidžiame for ciklą kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus
 for genre in unique_genres:
-    film_genre = df[df['Genre'].str.contains(genre)]
-    average = film_genre['Rating'].mean()
-    average_ratings.append((genre, average))
+    film_genre = df[df['Genre'].str.contains(genre)]   # - Surandame kurie filmai turi nurodyta žanrą
+    average = film_genre['Rating'].mean()             # - Atliekame vidutinio įvertinimo skaičiavima su mean() funkcija
+    average_ratings.append((genre, average))         # - Žanro pavadinimą bei įvertinimo vidurkį įsirašome i sąrašą
 # Surikiuojame pagal vidutinį įvertinimą
 average_ratings.sort(key=lambda x: x[1], reverse=True)
 # Sukuriame diagramą
 fig, ax = plt.subplots()
-# Pridedame stulpelius vienas po kito
-for genre, average_len in average_ratings:
-    plt.bar(genre, average_len)
-# Pridedame ašies pavadinimus ir kitus grafiko elementus
+# Pridedame stulpelius vienas po kito eidami per visas sąrašo reikšmes
+for genre, average_rate in average_ratings:
+    plt.bar(genre, average_rate)
+# Pridedame ašies pavadinimus ir grafiko pavadinimą
 plt.xlabel('Žanras')
 plt.ylabel('Įvertinimo Vidurkis')
 plt.title('Įvertinimo vidurkis pagal žanrą')
-plt.xticks(rotation=45, ha='right')
-plt.tight_layout()
-plt.show()
+plt.xticks(rotation=45, ha='right')    # - Pasukame x ašį 45 kampu, kad tekstas nekirstų vienas ant kito
+plt.tight_layout()                    # - Sumažiname balta plotą aplink grįfiką
+plt.show()                           # - Rodome grafiką
 ##################################################
 
 
 ##### Grafikas Filmų skaičius pagal žanrą #####
-# Sukurkime grafiką su stulpeliais kiekvienam žanrui
+# Susikuriame naują sąraša kuriame rinksime informacija apie kiekvieno unikalaus žanro išleistų filmų skaičių
 count_films = []
+# Pasileidžiame for ciklą kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus
 for genre in unique_genres:
-    film_genre = df[df['Genre'].str.contains(genre)]
-    count = film_genre['Title'].count()
-    count_films.append((genre, count))
-    # Surikiuojame pagal vidutinį įvertinimą
+    film_genre = df[df['Genre'].str.contains(genre)]   # - Surandame kurie filmai turi nurodyta žanrą
+    count = film_genre['Title'].count()               # - Atliekame filmų apskaiciavima pagal žanrą su count() funkcija
+    count_films.append((genre, count))               # - Žanro pavadinimą bei filmų kieki tam žanrui įsirašome i sąrašą
+# Surikiuojame pagal filmų skaičiu
 count_films.sort(key=lambda x: x[1], reverse=True)
-    # Sukuriame diagramą
+# Sukuriame diagramą
 fig, ax = plt.subplots()
-    # Pridedame stulpelius vienas po kito
+# Pridedame stulpelius vienas po kito eidami per visas sąrašo reikšmes
 for genre, average_len in count_films:
     plt.bar(genre, average_len)
-# Pridedame ašies pavadinimus ir kitus grafiko pavadinimą
+# Pridedame ašies pavadinimus ir grafiko pavadinimą
 plt.xlabel('Žanras')
 plt.ylabel('Filmų skaičius')
 plt.title('Filmu skaičius pagal žanrą')
-plt.xticks(rotation=45, ha='right')
-plt.tight_layout()
-plt.show()
+plt.xticks(rotation=45, ha='right')    # - Pasukame x ašį 45 kampu, kad tekstas nekirstų vienas ant kito
+plt.tight_layout()                    # - Sumažiname balta plotą aplink grįfiką
+plt.show()                           # - Rodome grafiką
 ##################################################
 
 
 ##### Grafikas Vidutinė filmo trukme pagal žanrą #####
+# Susikuriame naują sąraša kuriame rinksime informacija apie kiekvieno unikalaus žanro filmų trukmės vidurkį
 average_lengths = []
+# Pasileidžiame for ciklą kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus
 for genre in unique_genres:
-    film_genre = df[df['Genre'].str.contains(genre)]
-    average_len = film_genre['Length'].mean()
-    average_lengths.append((genre, average_len))
-#
+    film_genre = df[df['Genre'].str.contains(genre)]   # - Surandame kurie filmai turi nurodyta žanrą
+    average_len = film_genre['Length'].mean()         # - Atliekame vidutinės trukmės skaičiavima su mean() funkcija
+    average_lengths.append((genre, average_len))     # - Žanro pavadinimą bei filmų trukmės vidurkį įsirašome i sąrašą
+# Surikiuojame pagal filmų trukmės vidurkius
 average_lengths.sort(key=lambda x: x[1], reverse=True)
 # Sukuriame diagramą
 fig, ax = plt.subplots()
-# Pridedame stulpelius vienas po kito
+# Pridedame stulpelius vienas po kito eidami per visas sąrašo reikšmes
 for genre, average_len in average_lengths:
     plt.bar(genre, average_len)
-# Pridedame ašies pavadinimus ir kitus grafiko pavadinimą
+# Pridedame ašies pavadinimus ir grafiko pavadinimą
 plt.xlabel('Žanras')
 plt.ylabel('Trukmės Vidurkis')
 plt.title('Trukmės vidurkis pagal žanrą')
-# x - ašies reikšmes pasukame 45 kampu kad tilptu viskas ir grafika laikome arčiau dešnės pusės
-plt.xticks(rotation=45, ha='right')
-# Pasirenkame kad butu maziau baltos erdves aplink grafiką
-plt.tight_layout()
-plt.show() # Rodome grafiką
+plt.xticks(rotation=45, ha='right')    # - Pasukame x ašį 45 kampu, kad tekstas nekirstų vienas ant kito
+plt.tight_layout()                    # - Sumažiname balta plotą aplink grįfiką
+plt.show()                           # - Rodome grafiką
 #######################################################
 
 
-##### Diagrama su filmu reitingais ######
+##### Taškinė diagrama su filmu įvertinimais ######
+# Pasirenkame grafiko dydį
 plt.figure(figsize=(10,6))
+# Sukuriame taškinio išsibarstymo grafiką, nurodydami savo x, y ašis, taip pat taškų pisiskirstyma pagal įvertinimą
+# Nusistatome savo spalvų palete taip pat pasirenkame jog taškų dydis priklauso nuo įvertinimo
 sns.scatterplot(data=df,x='Year', y='Rating', hue='Rating', palette='icefire', size='Rating', sizes=(20,200))
+# Pridedame ašies pavadinimus ir grafiko pavadinimą
 plt.title('Diagrama su filmu reitingais')
 plt.xlabel('Metai')
 plt.ylabel('Reitingas')
-plt.tight_layout()
-plt.show()
-##########################################
+plt.tight_layout()           # - Sumažiname balta plotą aplink grįfiką
+plt.show()                  # - Rodome grafiką
+####################################################
 
 
 ##### Išleistų filmų pagal metus histograma #####
+# Sukuriame histogramą pasirinkdami metus kaip musu x ašies parametrą, stulpeliu skaičiu bei grafiko spalvą
 sns.histplot(data=df, x="Year", bins=15, color='r')
+# Pridedame ašies pavadinimus ir grafiko pavadinimą
 plt.title('Išleistų filmų skaičius per metus')
 plt.xlabel('Metai')
 plt.ylabel('Filmų skaičius')
-plt.show()
+plt.show()                 # - Rodome grafiką
 #################################################
 
 
-##### Įvertinimo vidurkis kas 10 metų intervalus #####
+##### Grafikas įvertinimo vidurkis kas 10 metų intervalus #####
+# Susikuriame nauja stulpeli mūsų naudojamame DataFrame kuriame nurodome kad imsim metus nuo 1910 kas 10 metu  iki 2020
 df['Year_Inteval'] = pd.cut(df['Year'], bins=range(1910, 2030, 10), right=False)
+# Susigrupuojame duomenis pagal metų intervalus ir skaičiuojame įvertinimo vidurkius kiekvienam intervalui
+# Duomenis taip pat yra surikiuojami nuo didžiausio įvertinimo vidurkio iki mažiausio
 sorted_data = df.groupby('Year_Inteval', observed=True)['Rating'].mean().reset_index().sort_values('Rating', ascending=False)
 
+# Pasirenkame grafiko dydį
 plt.figure(figsize=(10,8))
+# Sukuriame 'bar' tipo grafiką naudodami mūsų prieš tai sutvarkytus duomenis, pasirenkame spalvas stulpelių
 plt.bar(sorted_data['Year_Inteval'].astype(str), sorted_data['Rating'], color='royalblue', edgecolor='black')
+# Pridedame ašies pavadinimus ir grafiko pavadinimą
 plt.xlabel('10 metų intervalai')
 plt.ylabel('Įvertinimo vidurkis')
 plt.title('Įvertinimo vidurkis pagal 10 metų intervalus')
-plt.xticks(rotation=45, ha='right')
-plt.show()
+plt.xticks(rotation=45, ha='right')    # - Pasukame x ašį 45 kampu, kad tekstas nekirstų vienas ant kito
+plt.show()                            # - Rodome grafiką
 ######################################################

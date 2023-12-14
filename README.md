@@ -1,6 +1,7 @@
 Projekto Pavadinimas: Kino Filmų Reitingų Analizė
 
 Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisvai prieinama ir kurios duomenimis gali naudotis vartotojai. Pasirinkome pavadinimus, metus, serifikatus, filmo laiką, žanrus ir įvertinimus, išrinkome jų klases ir BeautifulSoup 4 (bs4) bibliotekos pagalba nuskaitėme duomenis iš svetainės. 
+- Projekto pirmą failą pavadinome 'scraping.py' ir jame vykdėme duomenų įkėlimą ir jų tvarkymą.
 - Projekto pradžioje nurodėme funkciją: 'def scrape(url):', kuri apima visus duomenis iki funkcijos pabaigos:
 - 'df = scrape('https://www.imdb.com/list/ls063676189/?st_dt=&mode=detail&page=')'.
 - Ši funkcija apima visus joje esančius duomenis ir kitoje vietoje juos įkelia, kai tai nurodoma.
@@ -9,6 +10,7 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - data.append(movie)'   - ši komanda nuskaito duomenis po vieną filmų sąrašą, t.y. pirmiausia nuskaito pirmo puslapio duomenis, po to antro ir sukelia juos sąrašo apačioje ir t.t.
 - Surinktus ir sutvarkytus duomenis sukelėme į Pandas DataFrame: 'df = pd.DataFrame(data)'.
 - Nurodėme, kad panaikintų pasikartojančius filmus: 'df.drop_duplicates(['Title'])' ir kartotų df: 'return df'.
-- Komanda 'if __name__ == "__main__":' 
+- Komanda 'if __name__ == "__main__":' nurodo, kad šis kodas bus vykdomas tik jei tekstas paleistas kaip pagrindinė (main) programa.
+- 
 
 

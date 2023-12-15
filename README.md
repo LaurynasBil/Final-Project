@@ -55,7 +55,10 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
   Minimalus filmų įvertinimas: 1.2
   Maksimalus filmų įvertinimas: 9.3
   ```
-- Taip pat randam filmų laiko vidurkį, minimalią ir maximalią filmų laiko reikšmes.
+- Taip pat randam filmų laiko vidurkį, minimalią ir maximalią filmų laiko reikšmes:
+  Vidutinė filmų trukmė yra: 108.18 min
+  Minimali filmo trukmė: 43 min
+  Maksimali filmo trukmė: 739 min
 - Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus:
 - `year_groups = df.groupby('Year').size()`
 - `print(year_groups)`

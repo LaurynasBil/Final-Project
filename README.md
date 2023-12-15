@@ -85,35 +85,35 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Nurodome grafiko dydį: `plt.figure(figsize=(10,9))`.
 - Nurodome grafiko rūšį: `popular_cert.plot(kind='bar')`.
 - Nurodome grafiko pavadinimą, grafiko x bei y ašių pavadinimus ir grafiko x ašies pasvirimo kampo dydį, t.y. pasukame x ašį 45 kampu, kad tekstas nekristų vienas ant kito, rodome grafiką.
- ![fig1](https://github.com/LaurynasBil/Final-Project/blob/main/fig1.png) 
+ ![fig1](https://github.com/LaurynasBil/Final-Project/blob/main/plots/fig1.png) 
 - Sukuriame grafiką `Įvertinimo vidurkis pagal žanrą`:
 - Susirašome visus galimus unikalius žanrus, susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro įvertinimų vidurkį.
 - Pasileidžiame `for` ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame, kurie filmai turi nurodytą žanrą, atliekame vidutinio įvertinimo skaičiavimą su 'mean()' funkcija, žanro pavadinimą bei įvertinimo vidurkį įsirašome i sąrašą. Surikiuojame pagal vidutinį įvertinimą.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
- ![fig2](https://github.com/LaurynasBil/Final-Project/blob/main/fig2.png) 
+ ![fig2](https://github.com/LaurynasBil/Final-Project/blob/main/plots/fig2.png) 
 - Sukuriame grafiką `Filmų skaičius pagal žanrą`:
 - Susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro išleistų filmų skaičių.
 - Pasileidžiame `for` ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame kurie filmai turi nurodyta žanrą, atliekame filmų apskaičiavimą pagal žanrą su 'count()' funkcija, žanro pavadinimą bei filmų kiekį tam žanrui - įsirašome į sąrašą. Surikiuojame pagal filmų skaičių.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
- ![fig3](https://github.com/LaurynasBil/Final-Project/blob/main/fig3.png)
+ ![fig3](https://github.com/LaurynasBil/Final-Project/blob/main/plots/fig3.png)
 - Sukuriame grafiką `Vidutinė filmo trukmė pagal žanrą`.
 - Susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro filmų trukmės vidurkį.
 - Pasileidžiame 'for' ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame kurie filmai turi nurodytą žanrą, atliekame vidutinės trukmės skaičiavimą su 'mean()' funkcija, žanro pavadinimą bei filmų trukmės vidurkį įsirašome į sąrašą. Surikiuojame pagal filmų trukmės vidurkius.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
- ![fig4](https://github.com/LaurynasBil/Final-Project/blob/main/fig4.png)
+ ![fig4](https://github.com/LaurynasBil/Final-Project/blob/main/plots/fig4.png)
 - Sukuriame grafiką `Taškinė diagrama su filmu įvertinimais`.
 - Pasirenkame grafiko dydį, sukuriame taškinio išsibarstymo grafiką, nurodydami savo x, y ašis, taip pat taškų pisiskirstyma pagal įvertinimą, nusistatome savo spalvų paletę, taip pat pasirenkame jog taškų dydis priklauso nuo įvertinimo.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
- ![fig5](https://github.com/LaurynasBil/Final-Project/blob/main/fig5.png)
+ ![fig5](https://github.com/LaurynasBil/Final-Project/blob/main/plots/fig5.png)
 - Sukuriame grafiką `Išleistų filmų pagal metus histograma`.
 - Sukuriame histogramą pasirinkdami metus kaip mūsų x ašies parametrą, stulpelių skaičių bei grafiko spalvą.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
- ![fig6](https://github.com/LaurynasBil/Final-Project/blob/main/fig6.png)
+ ![fig6](https://github.com/LaurynasBil/Final-Project/blob/main/plots/fig6.png)
 - Sukuriame grafiką `Įvertinimo vidurkis kas 10 metų intervalus`.
 - Susikuriame naują stulpelį mūsų naudojamame DataFrame, kuriame nurodome, kad imsim metus nuo 1910 kas 10 metu iki 2020 metų.
 -  Susigrupuojame duomenis pagal metų intervalus ir skaičiuojame įvertinimo vidurkius kiekvienam intervalui, duomenis taip pat yra surikiuojami nuo didžiausio įvertinimo vidurkio iki mažiausio. Sukuriame 'bar' tipo grafiką naudodami mūsų prieš tai sutvarkytus duomenis, pasirenkame stulpelių spalvas.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
- ![fig7](https://github.com/LaurynasBil/Final-Project/blob/main/fig7.png)
+ ![fig7](https://github.com/LaurynasBil/Final-Project/blob/main/plots/fig7.png)
 
 **Išvados:**
 1. Išanalizavus sukeltus duomenis ir atlikus duomenų analizę nustatėme, kad: 

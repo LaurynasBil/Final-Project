@@ -4,7 +4,7 @@
 
 **Projekto vykdymo eiga:**
 Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisvai prieinama ir kurios duomenimis gali naudotis vartotojai. Pasirinkome šiuos duomenis: pavadinimus, metus, serifikatus, filmo laiką, žanrus ir įvertinimus, išrinkome jų klases ir BeautifulSoup 4 (bs4) bibliotekos pagalba nuskaitėme duomenis iš svetainės. 
-- Projekto pirmą failą pavadinome 'scraping.py' ir jame vykdėme duomenų įkėlimą ir jų tvarkymą.
+- Projekto pirmą failą pavadinome `scraping.py` ir jame vykdėme duomenų įkėlimą ir jų tvarkymą.
 - Projekto pradžioje importavome reikalingas bibliotekas:
   ```
   from bs4 import BeautifulSoup

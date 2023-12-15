@@ -59,7 +59,7 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
   ```
   Vidutinė filmų trukmė yra: 108.18 min
   Minimali filmo trukmė: 43 min
-  Maksimali filmo trukmė: 739 min
+  Maksimali filmo trukmė: 439 min
   ```
 - Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus:
 - `year_groups = df.groupby('Year').size()`

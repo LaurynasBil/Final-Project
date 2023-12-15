@@ -1,8 +1,8 @@
-Projekto Pavadinimas: Kino Filmų Reitingų Analizė
+**Projekto Pavadinimas: Kino Filmų Reitingų Analizė**
 
-Projekto tikslas: Surinkti duomenis apie kino filmus iš interneto svetainės www.imdb.com, juos išanalizuoti ir vizualizuoti. Išmokti dirbti su realiais duomenimis, taikyti duomenų valymo ir analizės metodus bei pateikti įžvalgas per įvairias vizualizacijas.
+**Projekto tikslas:** Surinkti duomenis apie kino filmus iš interneto svetainės www.imdb.com, juos išanalizuoti ir vizualizuoti. Išmokti dirbti su realiais duomenimis, taikyti duomenų valymo ir analizės metodus bei pateikti įžvalgas per įvairias vizualizacijas.
 
-Projekto vykdymo eiga:
+**Projekto vykdymo eiga:**
 Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisvai prieinama ir kurios duomenimis gali naudotis vartotojai. Pasirinkome šiuos duomenis: pavadinimus, metus, serifikatus, filmo laiką, žanrus ir įvertinimus, išrinkome jų klases ir BeautifulSoup 4 (bs4) bibliotekos pagalba nuskaitėme duomenis iš svetainės. 
 - Projekto pirmą failą pavadinome 'scraping.py' ir jame vykdėme duomenų įkėlimą ir jų tvarkymą.
 - Projekto pradžioje importavome reikalingas bibliotekas:
@@ -56,18 +56,28 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
   Maksimalus filmų įvertinimas: 9.3
   ```
 - Taip pat randam filmų laiko vidurkį, minimalią ir maximalią filmų laiko reikšmes:
+  ```
   Vidutinė filmų trukmė yra: 108.18 min
   Minimali filmo trukmė: 43 min
   Maksimali filmo trukmė: 739 min
+  ```
 - Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus:
 - `year_groups = df.groupby('Year').size()`
 - `print(year_groups)`
 - Apskaičiuojame, kiek filmų buvo išleista XX amžiuje ir kiek XXI amžiuje iki 2017 metų, t.y. iki nagrinėjamo laikotarpio pabaigos.
-- rows_with_year_above_2000 = df.loc[df['Year'] < 2000]   # - vykdo salyga iki 2000
-- print(rows_with_year_above_2000)
-- rows_with_year_above_2000 = df.loc[df['Year'] >= 2000]   # - vykdo salyga virs 2000
-- print(rows_with_year_above_2000)
--
+  ```
+  rows_with_year_bellow_2000 = df.loc[df['Year'] < 2000]   # - vykdo salyga iki 2000
+  rows_with_year_bellow_2000_count = rows_with_year_bellow_2000['Title'].count()   # - suskaičiuoja reikšmes
+  print(f'Filmų skaičius išleistų prieš 2000 metus: {rows_with_year_bellow_2000_count}')
+  rows_with_year_above_2000 = df.loc[df['Year'] >= 2000]   # - vykdo salyga 2000 ir daugiau
+  rows_with_year_above_2000_count = rows_with_year_above_2000['Title'].count()   # - suskaičiuoja reikšmes
+  print(f'Filmų skaičius išleistų 2000 metais ir po jų: {rows_with_year_above_2000_count}')
+  ```
+- Gauname rezultatus:
+  ```
+  Filmų skaičius išleistų prieš 2000 metus: 4155
+  Filmų skaičius išleistų 2000 metais ir po jų: 5500
+  ```
 - Atliekame duomenų vizualizaciją Matplotlib ir Seaborn bibliotekų pagalba.
 - Sukuriame grafiką `Įvertinimų vidurkis pagal sertifikatą`:
 - Susigrupuojame duomenis pagal sertifikatą ir įvertinimo vidutines reikšmes surikiuojame nuo didžiausios iki mažiausios.
@@ -105,7 +115,7 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
  ![fig7](https://github.com/LaurynasBil/Final-Project/blob/main/fig7.png)
 
-Išvados:
+**Išvados:**
 1. Išanalizavus sukeltus duomenis ir atlikus duomenų analizę nustatėme, kad: 
   Vidutinis filmų įvertinimas yra: 6.56
   Minimalus filmo įvertinimas: 1.2

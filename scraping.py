@@ -38,6 +38,9 @@ def scrape(url):
         # Einame per apjungto for ciklo visų atributų reikšmes po vieną ir susitvarkome duomenis įrašymui į sąrašą
         for title, year, certificate, runtime, genre, rating in zip(titles, years, certificates, runtimes, genres,
                                                                     ratings):
+            # Keliame if salyga patikrinti ar musu elementas nėra tuščias, jeigu jisai tuščias einame prie sekancčio
+            if not title:
+                continue
             # Surandame filmo pavadinimą pagal nuorodą, išrenkame tiktais tekstą ir panaikiname nepageidaujamus simbolius
             title_text = title.find('a').get_text().replace("'", "")
     # Gauname metų tekstinę reikšmę, pasinaikiname nepageidaujamus simbolius ir visa tai pasiverčiam į sveikajį skaičių

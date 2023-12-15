@@ -11,8 +11,8 @@ df2 = scrape('https://www.imdb.com/list/ls063676660/?st_dt=&mode=detail&page=')
 # Apjungiame mūsų abu DataFrames į vieną, kad galėtume toliau vykdyti duomenų analizę
 result = pd.concat([df1, df2])
 # Duomenis įrašome į csv failą, kad nereikėtų kiekvieną kartą laukti, kol surinks duomenis iš svetainės
-result.to_csv("result.csv", index = False)
-df = pd.read_csv('result.csv')
+result.to_csv("csv_files/result.csv", index = False)
+df = pd.read_csv('csv_files/result.csv')
 # Taip pat duomenis įsirašome į savo duombazę per mūsų sukurtą funkciją 'duomenu_irasymas_sql'
 # kur reikia nurodyti DataFrame, kurį naudosime įrašymui
 duomenu_irasymas_sql(df)

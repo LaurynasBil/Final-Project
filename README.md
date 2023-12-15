@@ -1,6 +1,6 @@
 Projekto Pavadinimas: Kino Filmų Reitingų Analizė
 
-Projekto tikslas: Išmokti dirbti su realiais duomenimis, taikyti duomenų valymo ir analizės metodus bei pateikti įžvalgas per įvairias vizualizacijas. Sugebėti surinkti duomenis apie kino filmus iš interneto, analizuoti juos ir vizualizuoti gautus rezultatus.
+Projekto tikslas: Surinkti duomenis apie kino filmus iš interneto svetainės www.imdb.com, juos išanalizuoti ir vizualizuoti. Išmokti dirbti su realiais duomenimis, taikyti duomenų valymo ir analizės metodus bei pateikti įžvalgas per įvairias vizualizacijas.
 
 Projekto vykdymo eiga:
 Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisvai prieinama ir kurios duomenimis gali naudotis vartotojai. Pasirinkome šiuos duomenis: pavadinimus, metus, serifikatus, filmo laiką, žanrus ir įvertinimus, išrinkome jų klases ir BeautifulSoup 4 (bs4) bibliotekos pagalba nuskaitėme duomenis iš svetainės. 

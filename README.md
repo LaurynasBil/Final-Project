@@ -36,7 +36,7 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Duomenis įrašome i csv failą, kad nereikėtų kiekvieną karta laukti kol surinks duomenis iš svetainės:
 - `result.to_csv("result.csv", index = False)`
 - `df = pd.read_csv('result.csv')`
-- Savo duomenis irašome į SQl lentelę naudodami sukurtą funkciją 'scraping.py' faile:
+- Savo duomenis įrašome į SQl lentelę naudodami sukurtą funkciją 'scraping.py' faile:
 - `duomenu_irasymas_sql(df)`.
 - 
 - Atliekame duomenų analizę.
@@ -59,12 +59,12 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus:
 - `year_groups = df.groupby('Year').size()`
 - `print(year_groups)`
-- Apskaičiuojame, kiek filmų buvo išleista XX amžiuje ir kiek XXI amžiuje iki 2017 metų.
+- Apskaičiuojame, kiek filmų buvo išleista XX amžiuje ir kiek XXI amžiuje iki 2017 metų, t.y. iki nagrinėjamo laikotarpio pabaigos.
 - rows_with_year_above_2000 = df.loc[df['Year'] < 2000]   # - vykdo salyga iki 2000
 - print(rows_with_year_above_2000)
 - rows_with_year_above_2000 = df.loc[df['Year'] >= 2000]   # - vykdo salyga virs 2000
 - print(rows_with_year_above_2000)
-
+-
 - Atliekame duomenų vizualizaciją Matplotlib ir Seaborn bibliotekų pagalba.
 - Sukuriame grafiką `Įvertinimų vidurkis pagal sertifikatą`:
 - Susigrupuojame duomenis pagal sertifikatą ir įvertinimo vidutines reikšmes surikiuojame nuo didžiausios iki mažiausios.
@@ -84,8 +84,8 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
  ![fig3](https://github.com/LaurynasBil/Final-Project/blob/main/fig3.png)
 - Sukuriame grafiką `Vidutinė filmo trukmė pagal žanrą`.
-- Susikuriame naują sąraša kuriame rinksime informacija apie kiekvieno unikalaus žanro filmų trukmės vidurkį.
-- Pasileidžiame 'for' ciklą kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame kurie filmai turi nurodyta žanrą, atliekame vidutinės trukmės skaičiavima su 'mean()' funkcija, žanro pavadinimą bei filmų trukmės vidurkį įsirašome į sąrašą. Surikiuojame pagal filmų trukmės vidurkius.
+- Susikuriame naują sąrašą, kuriame rinksime informaciją apie kiekvieno unikalaus žanro filmų trukmės vidurkį.
+- Pasileidžiame 'for' ciklą, kad eitume per visus unikalius žanrus po vieną ir kiekvienam jam atliktume skaičiavimus, surandame kurie filmai turi nurodytą žanrą, atliekame vidutinės trukmės skaičiavimą su 'mean()' funkcija, žanro pavadinimą bei filmų trukmės vidurkį įsirašome į sąrašą. Surikiuojame pagal filmų trukmės vidurkius.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
  ![fig4](https://github.com/LaurynasBil/Final-Project/blob/main/fig4.png)
 - Sukuriame grafiką `Taškinė diagrama su filmu įvertinimais`.
@@ -97,7 +97,7 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
  ![fig6](https://github.com/LaurynasBil/Final-Project/blob/main/fig6.png)
 - Sukuriame grafiką `Įvertinimo vidurkis kas 10 metų intervalus`.
-- Susikuriame nauja stulpelį mūsų naudojamame DataFrame, kuriame nurodome, kad imsim metus nuo 1910 kas 10 metu iki 2020 metų.
+- Susikuriame naują stulpelį mūsų naudojamame DataFrame, kuriame nurodome, kad imsim metus nuo 1910 kas 10 metu iki 2020 metų.
 -  Susigrupuojame duomenis pagal metų intervalus ir skaičiuojame įvertinimo vidurkius kiekvienam intervalui, duomenis taip pat yra surikiuojami nuo didžiausio įvertinimo vidurkio iki mažiausio. Sukuriame 'bar' tipo grafiką naudodami mūsų prieš tai sutvarkytus duomenis, pasirenkame stulpelių spalvas.
 - Atliekame kitas reikiamas komandas grafiko sutvarkymui ir rodome grafiką.
  ![fig7](https://github.com/LaurynasBil/Final-Project/blob/main/fig7.png)
@@ -105,16 +105,17 @@ Atliekant projektą naudojomės interneto svetaine www.imdb.com, kuri yra laisva
 Išvados:
 1. Išanalizavus sukeltus duomenis ir atlikus duomenų analizę nustatėme, kad: 
   Vidutinis filmų įvertinimas yra: 6.56
-  Minimalus filmų įvertinimas: 1.2
-  Maksimalus filmų įvertinimas: 9.3
+  Minimalus filmo įvertinimas: 1.2
+  Maksimalus filmo įvertinimas: 9.3
   Vidutinė filmų trukmė yra: 108.18 min
   Minimali filmo trukmė: 43 min
   Maksimali filmo trukmė: 739 min
   Apskaičiuojame filmų skaičiaus pasiskirstymą pagal metus.
-2. Atliekant duomenų vizualizaciją sukurėme grafiką `Įvertinimų vidurkis pagal sertifikatą`, jame susigrupavome duomenis pagal sertifikatą ir įvertinimo vidutines reikšmes surikiavome nuo didžiausios iki mažiausios. Iš grafiko matyti, kad didžiausias filmų įvertinimas yra grupėje 18+, toliau seka 13+, M/PG ir t.t., mažiausiai įvertinami grupėje TV-Y7-FV, TV-Y7, AO ir t.t.
-3. Sukurus grafiką `Įvertinimų vidurkis pagal žanrą` matyti, kad geriausias įvertinimų vidurkis yra nespalvotų, karo, biografinių, vesternų, istorinių filmų, mažiausias siaubo, mokslinės fantastikos, šeimos, fantastikos, veiksmo ir t.t.
-4. Sukurus grafiką `Filmų skaičius pagal žanrą` matyti, kad daugiausiai yra filmų, kurių žanrai yra drama, komedija, veiksmas, detektyvai, romantiniai ir t.t., mažiausiai yra siaubo filmų, vesternų, muzikinių, sporto, karinių ir t.t.
-5. Sukurus grafiką 'Vidutinė filmo trukmė pagal žanrą` matyti, kad ilgiausi filmai yra istoriniai, muzikiniai, kariniai, biografiniai, vesterno ir t.t, trumpiausi yra animaciniai, siaubo, nespalvoti, komedijų, šeimos ir .t.t
-6. Sukurus grafiką 'Taškinė diagrama su filmu įvertinimais` matyti, kad senesnių filmų įvertinimai daugiausiai buvo aukšti. Kuo vėlesniais metais daugiau buvo išleidžiama filmų, tuo jų pasiskirstymas įvertinimo skalėje darėsi įvairesnis, daugėjo blogiau vertinamų filmų. Grafiko legendoje pateikta informacija, kokios spalvos ir kokio dydžio rutuliukai ką nurodo. Kuo didesni rutuliukai, tuo didesni įvertinimai, spalvos parodo vertinimo skalę.
-7. Sukurus grafiką 'Išleistų filmų pagal metus histograma` matyti, kad mažiausiai buvo išleista filmų XX amžiaus pradžioje, jų nelabai daug daugiau daugėjo iki maždaug 1970 metų ir labai žymiai daugiau išleisdavo nuo maždaug 1990 metų. Daugiausiai išleido 2010 metai, po to truputį sumažėjo.
-8. Sukurus grafiką 'Įvertinimo vidurkis kas 10 metų intervalus` matyti, kad aukščiausias įvertinamo vidurkis yra tų filmų, kurie buvo išleisti 1920-1930 metais, po to įvertinimo vidurkis mažėja ir pats mažiausias 2010-2020 metais išleistų filmų vidurkis. Taip yra todėl, kad seniausiai išleistų filmų buvo nedaug ir jų vertinimai nedaug skiriasi, o vėlesniais laikotarpiais daugėjant išleidžiamų filmų skaičiui tarp gerų filmų yra daug blogos kokybės filmų ir bendras įvertinimo vidurkis yra žemesnis.
+  Apskaičiuojame, kiek filmų buvo išleista XX amžiuje ir kiek XXI amžiuje iki 2017 metų, t.y. iki nagrinėjamo laikotarpio pabaigos.
+3. Atliekant duomenų vizualizaciją sukurėme grafiką `Įvertinimų vidurkis pagal sertifikatą`, jame susigrupavome duomenis pagal sertifikatą ir įvertinimo vidutines reikšmes surikiavome nuo didžiausios iki mažiausios. Iš grafiko matyti, kad didžiausias filmų įvertinimas yra grupėje 18+, toliau seka 13+, M/PG ir t.t., mažiausi įvertinami grupėje TV-Y7-FV, TV-Y7, AO ir t.t.
+4. Sukurus grafiką `Įvertinimų vidurkis pagal žanrą` matyti, kad geriausias įvertinimų vidurkis yra nespalvotų, karo, biografinių, vesternų, istorinių filmų, mažiausias siaubo, mokslinės fantastikos, šeimos, fantastikos, veiksmo ir t.t.
+5. Sukurus grafiką `Filmų skaičius pagal žanrą` matyti, kad daugiausiai yra filmų, kurių žanrai yra drama, komedija, veiksmas, detektyvai, romantiniai ir t.t., mažiausiai yra siaubo filmų, vesternų, muzikinių, sporto, karinių ir t.t.
+6. Sukurus grafiką 'Vidutinė filmo trukmė pagal žanrą` matyti, kad ilgiausi filmai yra istoriniai, muzikiniai, kariniai, biografiniai, vesterno ir t.t, trumpiausi yra animaciniai, siaubo, nespalvoti, komedijų, šeimos ir .t.t
+7. Sukurus grafiką 'Taškinė diagrama su filmu įvertinimais` matyti, kad senesnių filmų įvertinimai daugiausiai buvo aukšti. Kuo vėlesniais metais daugiau buvo išleidžiama filmų, tuo jų pasiskirstymas įvertinimo skalėje darėsi įvairesnis, daugėjo blogiau vertinamų filmų. Grafiko legendoje pateikta informacija, kokios spalvos ir kokio dydžio rutuliukai ką nurodo. Kuo didesni rutuliukai, tuo didesni įvertinimai, spalvos parodo vertinimo skalę.
+8. Sukurus grafiką 'Išleistų filmų pagal metus histograma` matyti, kad mažiausiai buvo išleista filmų XX amžiaus pradžioje, jų nelabai daug daugiau daugėjo iki maždaug 1970 metų ir labai žymiai daugiau išleisdavo maždaug nuo 1990 metų. Daugiausiai išleido apie 2010 metai, po to truputį sumažėjo.
+9. Sukurus grafiką 'Įvertinimo vidurkis kas 10 metų intervalus` matyti, kad aukščiausias įvertinamo vidurkis yra tų filmų, kurie buvo išleisti 1920-1930 metais, po to įvertinimo vidurkis mažėja ir pats mažiausias 2010-2020 metais išleistų filmų vidurkis. Taip yra todėl, kad seniausiai išleistų filmų buvo nedaug ir jų vertinimai nedaug skiriasi, o vėlesniais laikotarpiais daugėjant išleidžiamų filmų skaičiui tarp gerų filmų yra daug blogos kokybės filmų ir bendras įvertinimo vidurkis yra žemesnis.

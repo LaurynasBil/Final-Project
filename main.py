@@ -35,11 +35,13 @@ print(f'Maksimali filmo trukmė: {max_length} min')
 year_groups = df.groupby('Year').size()    # - filmų pasiskirstymas pagal metus
 print(year_groups)
 
-rows_with_year_above_2000 = df.loc[df['Year'] < 2000]   # - vykdo salyga iki 2000
-print(rows_with_year_above_2000)
+rows_with_year_bellow_2000 = df.loc[df['Year'] < 2000]   # - vykdo salyga iki 2000
+rows_with_year_bellow_2000_count = rows_with_year_bellow_2000['Title'].count()   # - suskaičiuoja reikšmes
+print(f'Filmų skaičius išleistų prieš 2000 metus: {rows_with_year_bellow_2000_count}')
 
 rows_with_year_above_2000 = df.loc[df['Year'] >= 2000]   # - vykdo salyga 2000 ir daugiau
-print(rows_with_year_above_2000)
+rows_with_year_above_2000_count = rows_with_year_above_2000['Title'].count()   # - suskaičiuoja reikšmes
+print(f'Filmų skaičius išleistų 2000 metais ir po jų: {rows_with_year_above_2000_count}')
 
 
 
@@ -175,7 +177,7 @@ sorted_data = df.groupby('Year_Interval', observed=True)['Rating'].mean().reset_
 # Pasirenkame grafiko dydį
 plt.figure(figsize=(10,8))
 # Sukuriame bar tipo grafiką naudodami mūsų prieš tai sutvarkytus duomenis, pasirenkame stulpelių spalvas
-plt.bar(sorted_data['Year_Inteval'].astype(str), sorted_data['Rating'], color='royalblue', edgecolor='black')
+plt.bar(sorted_data['Year_Interval'].astype(str), sorted_data['Rating'], color='royalblue', edgecolor='black')
 # Pridedame ašies pavadinimus ir grafiko pavadinimą
 plt.xlabel('10 metų intervalai')
 plt.ylabel('Įvertinimo vidurkis')
